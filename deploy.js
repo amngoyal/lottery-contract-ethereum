@@ -11,12 +11,11 @@ const web3 = new Web3(provider);
 
 (async function () {
     let accounts = await web3.eth.getAccounts();
-    const INITIAL_STRING = "Hello Aman";
 
     console.log(accounts);
 
     const result = await new web3.eth.Contract(JSON.parse(interface))
-        .deploy({ data: bytecode, arguments: [INITIAL_STRING] })
+        .deploy({ data: bytecode })
         .send({ from: accounts[0], gas: 1000000 });
 
     console.log("Deployed at: ", result.options.address)
